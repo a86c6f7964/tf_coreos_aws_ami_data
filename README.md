@@ -1,4 +1,17 @@
-data provider for aws coreos amis
+#### tf_coreos_aws_ami_data
+
+example of how to use
+```tf
+variable aws_region {
+  default = "us-west-2"
+}
+module "coreos"
+  source = "github.com/a86c6f7964/tf_coreos_aws_ami_data"
+}
+resource "aws_instance" "server" {
+  ami = "${lookup(module.coreos.amis, "${var.aws_region}-hvm", "")}"
+}
+```
 
 example output from apply
 ```bash
