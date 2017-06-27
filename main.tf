@@ -3,5 +3,5 @@ data "external" "coreos" {
 }
 
 output "coreos_amis" {
-  value = "${data.external.coreos.result.*}"
+  value = "${data.external.coreos.result}"
 }
